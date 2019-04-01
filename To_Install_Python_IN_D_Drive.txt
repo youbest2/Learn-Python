@@ -1,0 +1,13 @@
+D:\Software\Python>msiexec /a "D:\Software\Python\python-2.7.13.msi" /qb TARGETDIR=D:\Software\Python\python
+open command window for the folder and then>msiexec /a "D:\Software\Python\python-2.7.13.msi" /qb TARGETDIR=D:\Software\Python\python
+
+
+
+
+
+To install packages
+pip --proxy=con-sin-asg-01.conti.de:8080 install requests
+
+
+
+python -m pip install --upgrade pip

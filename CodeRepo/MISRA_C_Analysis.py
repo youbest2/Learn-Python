@@ -4,26 +4,37 @@ from tkinter import filedialog
 import os
 import pandas as pd
 import tkinter.messagebox
-
-
-# Add a variable to track whether the "Process Files" button has been clicked
-process_files_clicked = False
+from idlelib.colorizer import ColorDelegator, color_config
 
 
 def display_code():
-    # Get the source code of the current file
-    with open(__file__, 'r') as f:
-        source_code = f.read()
-
     # Create a new window to display the code
     code_window = tk.Toplevel(root)
+    code_window.state('zoomed')  # Maximize the window
+    'code_window.geometry("1920x1080")  # Set the size of the window'
 
     # Create a text widget and add it to the window
     text_widget = tk.Text(code_window)
     text_widget.pack()
 
+    # Set up the colorizer
+    delegator = ColorDelegator()
+    delegator.setdelegate(text_widget)
+    color_config(text_widget)
+
+    # Get the source code of the current file
+    with open(__file__, 'r') as f:
+        source_code = f.read()
+
     # Insert the source code into the text widget
     text_widget.insert('end', source_code)
+
+    # Update the display
+    text_widget.update_idletasks()
+
+
+# Add a variable to track whether the "Process Files" button has been clicked
+process_files_clicked = False
 
 
 # Function to handle file selection
@@ -150,20 +161,20 @@ root.geometry("520x160")  # Set dimensions to 8cm x 6cm (assuming 96 DPI)
 
 # Create widgets
 c_label = tk.Label(root, text="C File:")
-c_entry = tk.Entry(root, width=40)  # Increase the width to show full path
+c_entry = tk.Entry(root, width=50)  # Increase the width to show full path
 c_entry.insert(0, "D:/Temp/PythonExcel/DOORS_API/DGU.c")
 
 function_label = tk.Label(root, text="Function File:")
-function_entry = tk.Entry(root, width=40)  # Increase the width to show full path
+function_entry = tk.Entry(root, width=50)  # Increase the width to show full path
 function_entry.insert(0, "D:/Temp/PythonExcel/DOORS_API/Input.txt")
 
 output_label = tk.Label(root, text="Output File:")
-output_entry = tk.Entry(root, width=40)  # Increase the width to show full path
+output_entry = tk.Entry(root, width=50)  # Increase the width to show full path
 output_entry.insert(0, "D:/Temp/PythonExcel/DOORS_API/Output.txt")
 
 # New widgets for the Excel file
 excel_label = tk.Label(root, text="Excel File:")
-excel_entry = tk.Entry(root, width=40)
+excel_entry = tk.Entry(root, width=50)
 excel_entry.insert(0, "D:/Temp/PythonExcel/DOORS_API/new_misra_report.xlsx")
 
 # Create buttons for selecting files and processing files

@@ -8,42 +8,35 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from datetime import datetime
+import random
 
 # Get today's date
 today_date = datetime.now().strftime("%Y-%m-%d")
 
 # List of topics to search
 topics = [
-    "Climate Change and Environmental Sustainability",
-    "Quantum Computing",
-    "Space Exploration and Astronomy",
-    "Renewable Energy Technologies",
-    "Global Health and Pandemics",
-    "Cryptocurrencies and Blockchain",
-    "Psychology and Human Behavior",
-    "History of Ancient Civilizations",
-    "Modern Art and Design",
-    "Genetic Engineering and Biotechnology",
-    "Cybersecurity and Data Privacy",
-    "Philosophy and Ethics",
-    "Economics and Global Markets",
-    "Robotics and Automation",
-    "Cultural Anthropology",
-    "Virtual Reality and Augmented Reality",
-    "Education and E-Learning",
-    "Political Science and International Relations",
-    "Neuroscience and Brain Research",
-    "Literature and Literary Criticism",
-    "Sustainable Agriculture and Food Security",
-    "Urban Development and Smart Cities",
-    "Music Theory and History",
-    "Sports Science and Medicine",
-    "Fashion and Textile Design",
-    "Marine Biology and Oceanography",
-    "Artificial Intelligence in Healthcare",
-    "Social Media and Digital Communication",
-    "Ethnobotany and Traditional Medicine",
-    "Film Studies and Cinematography"
+    "Medieval History and Archaeology",
+    "Contemporary Art and Visual Culture",
+    "Internet of Things (IoT)",
+    "Moral Philosophy and Ethics",
+    "International Trade and Development",
+    "Human-Computer Interaction",
+    "Linguistics and Language Studies",
+    "Augmented Reality in Education",
+    "Comparative Politics",
+    "Cognitive Science",
+    "Postcolonial Literature",
+    "Agroecology and Permaculture",
+    "Transportation and Mobility",
+    "Music Production and Sound Engineering",
+    "Exercise Physiology",
+    "Textile Science and Engineering",
+    "Marine Conservation",
+    "Telemedicine and Digital Health",
+    "Digital Marketing and E-commerce",
+    "Ethnomusicology",
+    "Documentary Filmmaking",
+    "Environmental Psychology"
 ]
 
 # Set up Edge options to simulate a mobile device and ignore SSL errors
@@ -83,7 +76,10 @@ try:
         driver.get(search_url)
         print(f"Searching for: {topic}")
         print(f"Search URL: {driver.current_url}")
-        time.sleep(10)  # Wait for 10 seconds before the next search
+        # Generate a random sleep duration between 10 and 20 seconds.
+        sleep_duration = random.randint(10, 15) 
+        print(f"Waiting for {sleep_duration} seconds...")
+        time.sleep(sleep_duration) # Pause execution for the generated sleep duration.
 
         # Check if the search is performed as mobile or desktop
         user_agent = driver.execute_script("return navigator.userAgent;")

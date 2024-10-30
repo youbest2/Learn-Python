@@ -1,6 +1,7 @@
 import webbrowser
 import time
 from datetime import datetime
+import random
 
 # Get today's date
 today_date = datetime.now().strftime("%Y-%m-%d")
@@ -49,4 +50,7 @@ webbrowser.register('chrome', None, webbrowser.BackgroundBrowser(chrome_path))
 for topic in topics:
     search_url = f"https://www.bing.com/search?q={topic.replace(' ', '+')}+{today_date}+&form=QBLH&sp=-1&lq=0&pq={topic.replace(' ', '+')}+{today_date}+&sc=11-42&qs=n&sk=&cvid=B3A9DC74AE0B4FDDBCEA7C42AC070FA1&ghsh=0&ghacc=0&ghpl="
     webbrowser.get('chrome').open(search_url)
-    time.sleep(10)
+    # Generate a random sleep duration between 10 and 20 seconds.
+    sleep_duration = random.randint(10, 20) 
+    print(f"Waiting for {sleep_duration} seconds...")
+    time.sleep(sleep_duration) # Pause execution for the generated sleep duration.
